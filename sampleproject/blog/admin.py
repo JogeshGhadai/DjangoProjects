@@ -11,3 +11,11 @@ class CategoryAdmin(admin.ModelAdmin):
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(Category, CategoryAdmin)
+
+'''
+# Alternate Method
+
+@admin.register(Post)
+class PostAdmin(admin.ModelAdmin):
+    pass
+'''
