@@ -8,8 +8,8 @@
 	{% else %}
 		<h1>Hey There, {{name}}!</h1>
 	{% endif %}
-	<h2>Hey, There!</h2>
-	{% for count in itr %}
-		<h3><b>{{count}} Hey!</b></h3>
+	<h2>All Names Visited:</h2>
+	{% for count,name in itr %}
+		<h3><b>{{count}}) {{name}}</b></h3>
 	{% endfor %}
 {% endblock %}
