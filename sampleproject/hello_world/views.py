@@ -8,13 +8,15 @@ def hello_world(request, name):
     all_names = Names.objects.all()
     all_name_list = [x.name for x in all_names]
     chk_name = name.lower() in all_name_list
+    flag = 'old'
     if not chk_name:
+        flag = 'new'
         all_name_list.append(name)
         name_obj = Names(name=name.lower())
         name_obj.save()
     context_dict = {
             "name": name,
-            "chk": name[0].lower(),
+            "chk": flag,
             "itr": list(enumerate([x.title() for x in all_name_list], start=1)),
         }
     return render(request, 'hello_world.html', context_dict)
