@@ -1,0 +1,25 @@
+<html>
+   <link href="./styles.css" type="text/css" rel="stylesheet">
+   <body>
+      <form name = "form" action = "{% url "hello_world.views.login_form_test" %}" 
+         method = "POST" >{% csrf_token %}
+         <div style="width: 200px;">
+           <center>
+             <input type = "text" placeholder = "Username" name = "username" />
+	   </center>
+         </div>
+         <div style="width: 200px;">
+	   <center>
+             <input type = "password" placeholder = "Password" name = "password" />
+	   </center>
+         </div>	
+         <div style="width: 200px;">
+           <center>
+             <button type = "submit" value = "Login" >
+               <strong>Login</strong>
+             </button>
+	   </center>
+         </div>
+      </form>
+   </body>
+</html>
