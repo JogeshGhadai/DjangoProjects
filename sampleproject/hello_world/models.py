@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.signals import post_save, pre_save
+
 
 # Create your models here.
 class Names(models.Model):
@@ -16,3 +18,16 @@ class Profile(models.Model):
 
    class Meta:
       db_table = "profile"
+
+
+def after_save_signal_receiver(sender, instance, **kwargs):
+    # import pdb;pdb.set_trace()
+    print("#### After Save Receiver Ran ####")
+
+
+def before_save_receiver(sender, instance, **kwargs):
+    print("#### Before Save Receiver Ran ####")
+
+
+pre_save.connect(before_save_receiver, sender=Names)
+post_save.connect(after_save_signal_receiver, sender=Names)

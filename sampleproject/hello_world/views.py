@@ -2,6 +2,8 @@ from hello_world.models import Names, Profile
 from hello_world.forms import LoginForm, ProfileForm
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
+from django.core.signals import request_started, request_finished
+from django.dispatch import receiver
 
 
 def hello_world(request, name):
@@ -22,6 +24,17 @@ def hello_world(request, name):
             "itr": list(enumerate([x.title() for x in all_name_list], start=1)),
         }
     return render(request, 'hello_world.html', context_dict)
+
+
+@receiver(request_finished)
+def do_at_request_finish(sender, **kwargs):
+    # import pdb;pdb.set_trace()
+    print("#### Request Finished ####")
+
+
+@receiver(request_started)
+def do_at_request_start(sender, **kwargs):
+    print("#### Request Started ####")
 
 
 def test_redirect1(request):
